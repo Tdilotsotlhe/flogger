@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href='https://fonts.googleapis.com/css?family=Combo' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper  indigo lighten-3">
+          <a href="#!" class="brand-logo " style="color: black;">F.logger</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="register.html">Register</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </div>
+      </nav>
+    
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="register.html">Register</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    <h3 class="center-align">Login</h3>
+      
+    <div class="row">
+      <form class="col s12" action="functions/login.php" method="post">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="username" type="text" name="username">
+            <label for="username">username</label>
+          </div>
+
+        </div>
+      
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" name="pass">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        
+    <div class ="row center-align">
+        <button class="btn waves-effect waves-light center-align indigo lighten-3 z-depth-5" type="submit" name="login" id="loginBtn">Submit
+            <i class="material-icons right">send</i>
+          </button>
+    </div>
+
+       
+      </form>
+    </div>
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.sidenav');
+          var instances = M.Sidenav.init(elems, {menuWidth: 500});
+      });
+
+      // document.getElementById("loginBtn").addEventListener("click",function(e){
+      //   e.preventDefault();
+
+      // });
+
+
+    </script>
+
+    <script src="materialize.min.js"></script>
+</body>
+</html>

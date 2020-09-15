@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href='https://fonts.googleapis.com/css?family=Crimson Pro' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper  indigo lighten-3">
+          <a href="#!" class="brand-logo" style="color: #000000;">F.logger</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="reportForm.html">Report fault</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="logout.php">Log out</a></li>
+          </ul>
+        </div>
+      </nav>
+    
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="reportForm.html">Report fault</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="logout.php">Log out</a></li>
+      </ul>
+
+    <h3>Fault history</h3>
+    <ul class="collection" id="listHistory" name="listHistory">
+
+
+    </ul>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.sidenav');
+          var instances = M.Sidenav.init(elems, {menuWidth: 500});
+
+
+          //check login
+          fetch('sesh.php')
+          .then(response => response.json())
+          .then(data => kickout(data));
+
+          //loadHistory
+          fetch('functions/loadHistory.php')
+          .then(response => response.text())
+          .then(data => loadHist(data));
+
+      });
+
+      function kickout(retVal){
+        if(retVal == 0){
+          // console.log("SHO");
+          window.location.replace("login.html");
+        }
+      }
+
+      function loadHist(retVal) {
+        document.getElementById("listHistory").innerHTML = retVal;
+        console.log(retVal);
+      }
+
+    
+    </script>
+
+    <script src="materialize.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Fault</title>
+    <link href='https://fonts.googleapis.com/css?family=Crimson Pro' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" href="style.css">
+
+     <script type="text/javascript">
+ 
+      function initGeolocation() {
+        fetch('sesh.php')
+  .then(response => response.json())
+  .then(data => kickout(data));
+
+   if (navigator && navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+          } else {
+              console.log('Geolocation is not supported');
+          }
+
+  }
+   
+  function errorCallback() {
+    document.getElementById("gpsLoc").value = "NULL";
+
+  }
+   
+  function successCallback(position) {
+       
+  //   console.log(position.coords.latitude + ',' + position.coords.longitude);
+    // alert(position.coords.latitude + ',' + position.coords.longitude);
+     document.getElementById("gpsLoc").value = position.coords.latitude + ',' + position.coords.longitude;
+      }
+
+      function kickout(retVal){
+        if(retVal == 0){
+          // console.log("SHO");
+          window.location.replace("login.html");
+        }
+      }
+
+// function checkSesh(){
+//   fetch('sesh.php')
+//   .then(response => response.json())
+//   .then(data => kickout(data));
+// }
+
+
+
+
+  </script>
+</head>
+<body onload="javascript:initGeolocation()">
+
+    <nav>
+        <div class="nav-wrapper  indigo lighten-3">
+          <a href="#!" class="brand-logo" style="color: #000000;">F.logger</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="faultHistory.html">Fault log history</a></li>
+            <li><a href="#">help</a></li>
+            <li><a href="  logout.php">  logout</a></li>
+          
+          </ul>
+        </div>
+      </nav>
+
+    
+    
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="faultHistory.html">Fault log history</a></li>
+        <li><a href="#">help</a></li>
+      </ul>
+
+      <h3 class="center-align">Log new report</h3>
+
+<div id="test">
+  akjsdfhkjsdhfkjsdh
+</div>
+    <div class="row">
+        <form class="col s12" action="functions/report_fault.php" method="POST">
+        <div class="row">
+            <div class="input-field col s12" >
+              <select name="fault_type">
+                <option value="" disabled selected>choose your option</option>
+                <option value="broken light pole">broken light pole</option>
+                <option value="Water meter box leaking">Water meter box leaking</option>
+                <option value="No hot water">No hot water</option>
+                <option value="Resource Request">Resource Request</option>
+                <option value="Facility Report">Facility Report</option>
+                <option value="Other">Other</option>
+              </select>
+              <label>Fault/Request type</label>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="input-field col s12 ">
+              <select  name="customer_type">
+                <option value="" disabled selected>choose your option</option>
+                <option value="Residential">Residential</option>
+                <option value="Industrial">Industrial</option>
+                <option value="Plot">Plot</option>
+                <option value="School">School</option>
+                <option value="University">University</option>
+              </select>
+                <label>Customer type</label>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="input-field col s12 customer_notes">
+              <input id="institutionName" class="materialize-textarea" name="institutionName"></textarea>
+              <label for="institutionName">Institution Name</label>
+            </div>
+          </div> -->
+
+        
+                    
+              <div class="row">
+                <div class="input-field col s12 customer_notes">
+                  <textarea id="textarea1" class="materialize-textarea" name="notes"></textarea>
+                  <label for="textarea1">Please share details of issue</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="file-field input-field ">
+                  <div class="btn indigo lighten-3">
+                    <span>File</span>
+                    <input type="file" accept="image/*" capture="camera" name="theImage">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload image">
+                  </div>
+                </div>
+              </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="meter" type="text" name="meter">
+              <label for="text">Meter Number</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="AccNum" type="text" name="AccNum">
+              <label for="text">Account Number</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="location" type="text" name="location">
+              <label for="text">Address</label>
+            </div>
+          </div>
+
+          
+          <div class="row">
+            <div class="input-field col s12 ">
+              <select  name="gpsLocyes">
+                <option value="" disabled selected>Use GPS location?</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+                <label>Customer type</label>
+            </div>
+          </div>
+          <input id="gpsLoc" type="hidden" value="" name="gpsLoc">
+
+
+
+        <div class ="row center-align">
+
+            <button class="btn waves-effect waves-light center-align indigo lighten-3 z-depth-5" type="submit" name="register">Submit
+                <i class="material-icons right">send</i>
+              </button>
+        </div>
+        </form>
+      </div>
+
+       <!-- footer -->
+     <footer class="page-footer indigo lighten-3">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Flogger - Whippin that service!</h5>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2020 Copyright Dimpho Putu & Tshiamo Dilotsotle
+        </div>
+      </div>
+    </footer>
+    <!-- end of footer -->
+
+      <script>
+          //navbar js
+
+          document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.sidenav');
+          var instances = M.Sidenav.init(elems, {menuWidth: 500});
+      });
+
+      //option input js
+          document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, {menuWidth: 500});
+        });
+      </script>
+
+        <script src="materialize.min.js"></script>
+
+</body>
+</html>

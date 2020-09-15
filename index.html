@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href='https://fonts.googleapis.com/css?family=Combo' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper  indigo lighten-3">
+          <a href="#!" class="brand-logo " style="color: black;">F.logger</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">login</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </div>
+      </nav>
+    
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="register.html">Register</a></li>
+        <li><a href="login.html">login</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+
+    <h1 class="center-align">FLOGGER</h1>
+    <h5 class="center-align">Fault Logger</h5>
+      
+    <div class="row">
+
+        <div class ="row center-align">
+            <a href="login.html" class="btn waves-effect waves-light center-align indigo lighten-3 z-depth-5" type="submit" name="login" id="loginBtn">Login
+              
+            </a>
+        </div>
+      <br>
+      <br>
+
+        <div class ="row center-align">
+            <a  href="Register.html" class="btn waves-effect waves-light center-align indigo lighten-3 z-depth-5" type="submit" name="Register" id="Registerbtn">Register
+         
+            </a>
+        </div>
+        
+
+
+
+    </div>
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.sidenav');
+          var instances = M.Sidenav.init(elems, {menuWidth: 500});
+      });
+
+    </script>
+
+    <script src="materialize.min.js"></script>
+</body>
+</html>
